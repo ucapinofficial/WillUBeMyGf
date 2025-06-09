@@ -1,0 +1,271 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffebee;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+h1 {
+    color: #e91e63;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+#yes {
+    background-color: #4caf50;
+    color: white;
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+}
+
+#no {
+    background-color: #f44336;
+    color: white;
+    box-shadow: 0 4px 8px rgba(244, 67, 54, 0.3);
+    position: relative;
+}
+
+#yes:hover, #no:hover {
+    transform: translateY(-3px);
+}
+
+#yes:active, #no:active {
+    transform: translateY(1px);
+}
+
+.heart {
+    position: absolute;
+    pointer-events: none;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+}
+
+.emoji-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    display: none;
+    z-index: 100;
+}
+
+.emoji {
+    position: absolute;
+    font-size: 40px;
+    animation: emoji-float 3s ease-out forwards;
+}
+
+@keyframes emoji-float {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) scale(1.5);
+        opacity: 0;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.success-message {
+    text-align: center;
+    animation: pulse 1.5s infinite;
+    z-index: 10;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.success-message h1 {
+    font-size: 3em;
+    color: #e91e63;
+}
+
+.success-message p {
+    font-size: 1.5em;
+    color: #e91e63;
+}
+
+/* Teddy Bear Styles */
+.teddy-container {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: none;
+}
+
+.teddy-bear {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    animation: teddy-float 2s ease-in-out infinite;
+}
+
+@keyframes teddy-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.teddy-head {
+    width: 120px;
+    height: 100px;
+    background-color: #d2a679;
+    border-radius: 50% 50% 45% 45%;
+    position: absolute;
+    top: 0;
+    left: 40px;
+}
+
+.teddy-ear {
+    width: 40px;
+    height: 40px;
+    background-color: #a67c52;
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+}
+
+.teddy-ear.left {
+    left: 20px;
+}
+
+.teddy-ear.right {
+    right: 20px;
+}
+
+.teddy-face {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.teddy-eye {
+    width: 15px;
+    height: 15px;
+    background-color: #333;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.teddy-nose {
+    width: 20px;
+    height: 15px;
+    background-color: #333;
+    border-radius: 50%;
+    margin: 5px auto;
+}
+
+.teddy-mouth {
+    width: 30px;
+    height: 10px;
+    border-bottom: 3px solid #333;
+    border-radius: 0 0 50% 50%;
+    margin: 5px auto;
+}
+
+.teddy-body {
+    width: 100px;
+    height: 120px;
+    background-color: #d2a679;
+    border-radius: 20px;
+    position: absolute;
+    top: 90px;
+    left: 50px;
+}
+
+.teddy-arm {
+    width: 40px;
+    height: 60px;
+    background-color: #a67c52;
+    border-radius: 20px;
+    position: absolute;
+    top: 100px;
+}
+
+.teddy-arm.left {
+    left: 20px;
+    transform: rotate(30deg);
+}
+
+.teddy-arm.right {
+    right: 20px;
+    transform: rotate(-30deg);
+}
+
+.teddy-leg {
+    width: 50px;
+    height: 40px;
+    background-color: #a67c52;
+    border-radius: 20px;
+    position: absolute;
+    bottom: -20px;
+}
+
+.teddy-leg.left {
+    left: 30px;
+}
+
+.teddy-leg.right {
+    right: 30px;
+}
+
+.teddy-heart {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    color: red;
+    animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat {
+    0% { transform: translateX(-50%) scale(1); }
+    25% { transform: translateX(-50%) scale(1.1); }
+    50% { transform: translateX(-50%) scale(1); }
+    75% { transform: translateX(-50%) scale(1.1); }
+    100% { transform: translateX(-50%) scale(1); }
+}
