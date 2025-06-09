@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     const yesBtn = document.getElementById('yes');
     const noBtn = document.getElementById('no');
     const mainContent = document.getElementById('main-content');
@@ -17,11 +17,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 heart.classList.add('heart');
                 heart.style.left = Math.random() * 100 + 'vw';
                 heart.style.top = Math.random() * 100 + 'vh';
-                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
                 heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
                 document.body.appendChild(heart);
                 hearts.push(heart);
-
                 setTimeout(() => {
                     heart.remove();
                     hearts = hearts.filter(h => h !== heart);
@@ -33,22 +31,28 @@ document.addEventListener('DOMContentLoaded', function () {
     createHearts();
     setInterval(createHearts, 6000);
 
-    noBtn.addEventListener('mouseover', function () {
+    function moveNoButton() {
         yesSize += 0.2;
         yesBtn.style.transform = `scale(${yesSize})`;
 
-        const maxX = window.innerWidth - noBtn.offsetWidth;
-        const maxY = window.innerHeight - noBtn.offsetHeight;
+        const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+        const maxY = window.innerHeight - noBtn.offsetHeight - 20;
 
-        const randomX = Math.floor(Math.random() * maxX);
-        const randomY = Math.floor(Math.random() * maxY);
+        const randomX = Math.max(10, Math.floor(Math.random() * maxX));
+        const randomY = Math.max(10, Math.floor(Math.random() * maxY));
 
         noBtn.style.position = 'absolute';
         noBtn.style.left = randomX + 'px';
         noBtn.style.top = randomY + 'px';
+    }
+
+    noBtn.addEventListener('mouseover', moveNoButton);
+    noBtn.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        moveNoButton();
     });
 
-    yesBtn.addEventListener('click', function () {
+    yesBtn.addEventListener('click', function() {
         mainContent.classList.add('hidden');
         successMessage.classList.remove('hidden');
         emojiContainer.style.display = 'block';
@@ -68,13 +72,5 @@ document.addEventListener('DOMContentLoaded', function () {
                 }, 3000);
             }, i * 100);
         }
-
-        setInterval(() => {
-            const teddy = document.querySelector('.teddy-bear');
-            teddy.style.animation = 'none';
-            setTimeout(() => {
-                teddy.style.animation = 'teddy-float 2s ease-in-out infinite';
-            }, 10);
-        }, 5000);
     });
 });
